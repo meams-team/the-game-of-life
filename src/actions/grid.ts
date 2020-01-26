@@ -1,3 +1,5 @@
+import { GRID_DATA } from "./actionTypes";
+
 export const generateGridData = (rowCount: number, columnCount: number) => {
   const grid: [] = [];
   for (let i = 0; i < columnCount; i++) {
@@ -7,5 +9,8 @@ export const generateGridData = (rowCount: number, columnCount: number) => {
     }
   }
 
-  return grid;
+  return {
+    type: GRID_DATA,
+    payload: grid
+  };
 };
