@@ -1,2 +1,1 @@
-export const GENERATE_GRID_DATA = "GENERATE_GRID_DATA";
 export const GRID_DATA = "GRID_DATA";

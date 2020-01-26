@@ -1,0 +1,13 @@
+.box {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #000;
+}
+
+.box_0 {
+  background: #fff;
+}
+
+.box_1 {
+  background: #000;
+}
