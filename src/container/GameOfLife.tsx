@@ -2,22 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 
 // types
-import { Dispatch } from "redux";
 import { ICommonState, IGridProp } from "../entities/interfaces";
+import { ThunkDispatch } from "redux-thunk";
 
 // Actions
-import { generateGridData, play } from "../actions/grid";
+import { startPlay } from "../actions/grid";
 
 // Components
 import { Box } from "../components";
 
-class Grid extends React.Component<IGridProp> {
+class GameOfLife extends React.Component<IGridProp> {
   componentDidMount = () => {
-    this.props.generateGridData(50, 50);
-
-    setInterval(() => {
-      this.props.onStartPlay(this.props.gridData);
-    }, 1000);
+    const { rowCount, columnCount, timeInterval } = this.props;
+    this.props.startPlay(rowCount, columnCount, timeInterval);
   };
 
   // render
@@ -25,35 +22,35 @@ class Grid extends React.Component<IGridProp> {
     const { gridData } = this.props;
 
     if (!gridData.length) return null;
-    let elements: any = [];
+
+    let elements: React.ReactElement<any>[] = [];
+
     for (let i = 0; i < gridData.length; i++) {
       for (let j = 0; j < gridData.length; j++) {
         let value = gridData[i][j];
         elements.push(<Box value={value} key={`${i}_${j}`} />);
       }
     }
+
     return elements;
   };
 
   render() {
-    // console.log(this.props);
     return <div className="grid">{this.drawGrid()}</div>;
   }
 }
 
 const mapStateToProps = (state: ICommonState) => {
-  console.log("mapStateToProps", state);
   return {
-    gridData: state.grid.gridData
+    gridData: state.gameOfLife.gridData
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
   return {
-    generateGridData: (row: number, col: number) =>
-      dispatch(generateGridData(row, col)),
-    onStartPlay: (arr: number[][]) => dispatch(play(arr))
+    startPlay: (rowCount: number, columnCount: number, timeInterval: number) =>
+      dispatch(startPlay(rowCount, columnCount, timeInterval))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Grid);
+export default connect(mapStateToProps, mapDispatchToProps)(GameOfLife);

@@ -1,5 +1,7 @@
 import { GRID_DATA } from "./actionTypes";
 
+import { Dispatch } from "redux";
+
 export const generateGridData = (rowCount: number, columnCount: number) => {
   const grid: [] = [];
   for (let i = 0; i < columnCount; i++) {
@@ -8,10 +10,8 @@ export const generateGridData = (rowCount: number, columnCount: number) => {
       (grid[i][j] as number) = Math.floor(Math.random() * 2);
     }
   }
-  return {
-    type: GRID_DATA,
-    payload: grid
-  };
+
+  return grid;
 };
 
 export const play = (gridFull: number[][]) => {
@@ -33,8 +33,29 @@ export const play = (gridFull: number[][]) => {
       if (!g[i][j] && count === 3) g2[i][j] = 1;
     }
   }
+
   return {
     type: GRID_DATA,
     payload: g2
+  };
+};
+
+export const startPlay = (
+  rowCount: number,
+  columnCount: number,
+  timeInterval: number
+) => {
+  return (dispatch: Dispatch) => {
+    const grid = generateGridData(rowCount, columnCount);
+
+    dispatch({
+      type: GRID_DATA,
+      payload: grid
+    });
+
+    // set tick
+    setInterval(() => {
+      dispatch(play(grid));
+    }, timeInterval);
   };
 };

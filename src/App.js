@@ -2,13 +2,17 @@ import React from "react";
 import "./App.css";
 
 // containers
-import Grid from "./container/Grid";
+import GameOfLife from "./container/GameOfLife";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Grid />
+        <GameOfLife
+          rowCount={process.env.REACT_APP_ROW}
+          columnCount={process.env.REACT_APP_COLUMN}
+          timeInterval={process.env.REACT_APP_TIME_INTERVAL_MS}
+        />
       </div>
     );
   }

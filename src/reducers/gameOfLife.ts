@@ -7,7 +7,7 @@ const initialState: IGridInitState = {
   gridData: []
 };
 
-const grid = (state = initialState, action: IAction) => {
+const gameOfLife = (state = initialState, action: IAction) => {
   switch (action.type) {
     case GRID_DATA:
       return { ...state, gridData: action.payload };
@@ -17,4 +17,4 @@ const grid = (state = initialState, action: IAction) => {
   }
 };
 
-export default grid;
+export default gameOfLife;

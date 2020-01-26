@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import grid from "./grid";
+import gameOfLife from "./gameOfLife";
 
 export default combineReducers({
-  grid
+  gameOfLife
 });
