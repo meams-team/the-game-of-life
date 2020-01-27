@@ -7,6 +7,7 @@ export interface IGameOfLifeProp {
   rowCount: number;
   columnCount: number;
   timeInterval: number;
+  title: string;
   generateGridData: (arg0: number, arg1: number) => {};
   startPlay: (rowCount: number, columnCount: number, timeInterval: number) => {};
 }

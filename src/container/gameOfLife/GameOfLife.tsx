@@ -2,14 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 
 // types
-import { ICommonState, IGameOfLifeProp } from "../entities/gameOfLifeInterfaces";
+import { ICommonState, IGameOfLifeProp } from "../../entities/gameOfLifeInterfaces";
 import { ThunkDispatch } from "redux-thunk";
 
 // Actions
-import { generateGridData, startPlay } from "../actions/gameOfLifeActions";
+import { startPlay } from "../../actions/gameOfLifeActions";
 
 // Components
-import { Box } from "../components";
+import { Box } from "../../components";
+import { ClipLoader } from "react-spinners";
+
+// styles
+import "./gameOfLife.css";
 
 class GameOfLife extends React.Component<IGameOfLifeProp> {
   componentDidMount = () => {
@@ -22,7 +26,7 @@ class GameOfLife extends React.Component<IGameOfLifeProp> {
   drawGrid = () => {
     const { gridData } = this.props;
 
-    if (!gridData.length) return null;
+    if (!gridData.length) return <ClipLoader size={150} color={"#123abc"} />;
 
     let elements: React.ReactElement<any>[] = [];
 
@@ -37,7 +41,13 @@ class GameOfLife extends React.Component<IGameOfLifeProp> {
   };
 
   render() {
-    return <div className="grid">{this.drawGrid()}</div>;
+    const { title } = this.props;
+    return (
+      <div className="game-of-life">
+        <div className="title">{title}</div>
+        <div className="grid">{this.drawGrid()}</div>
+      </div>
+    );
   }
 }
 
@@ -49,8 +59,8 @@ const mapStateToProps = (state: ICommonState) => {
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
   return {
-    generateGridData: (row: number, col: number) => dispatch(generateGridData(5, 5)),
-    startPlay: (rowCount: number, columnCount: number, timeInterval: number) => dispatch(startPlay(rowCount, columnCount, timeInterval))
+    startPlay: (rowCount: number, columnCount: number, timeInterval: number) =>
+      dispatch(startPlay(rowCount, columnCount, timeInterval))
   };
 };
 
