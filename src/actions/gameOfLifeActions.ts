@@ -11,15 +11,15 @@ export const generateGridData = (rowCount: number, columnCount: number) => {
     }
   }
 
-  const grid2 = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
-  ];
+  // const grid2 = [
+  //   [0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0],
+  //   [0, 1, 1, 1, 0],
+  //   [0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0]
+  // ];
 
-  return grid2;
+  return grid;
 };
 
 export const play = (grid: number[][], rowCount: number, columnCount: number) => {
@@ -75,11 +75,11 @@ export const startPlay = (rowCount: number, columnCount: number, timeInterval: n
 
     // set tick
     setInterval(() => {
-      grid = play(grid, 5, 5);
+      grid = play(grid, rowCount, columnCount);
       dispatch({
         type: GRID_DATA,
         payload: grid
       });
-    }, 1000);
+    }, timeInterval);
   };
 };

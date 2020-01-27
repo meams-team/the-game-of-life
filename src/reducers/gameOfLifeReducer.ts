@@ -1,5 +1,5 @@
 // types
-import { IGridInitState, IAction } from "../entities/interfaces";
+import { IGridInitState, IAction } from "../entities/gameOfLifeInterfaces";
 
 import { GRID_DATA } from "../actions/actionTypes";
 

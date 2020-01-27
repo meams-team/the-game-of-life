@@ -15,8 +15,8 @@ code {
 .grid {
   display: flex;
   flex-direction: row;
-  width: 60px;
-  height: 60px;
+  width: 600px;
+  height: 600px;
   flex-wrap:  wrap;
   border: 2px solid indianred;
 }

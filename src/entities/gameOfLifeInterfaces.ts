@@ -12,7 +12,7 @@ export interface IGameOfLifeProp {
 }
 
 export interface IGridInitState {
-  gridData: [];
+  gridData: number[][];
 }
 
 export interface IBoxProp {

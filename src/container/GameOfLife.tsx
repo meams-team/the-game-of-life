@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 // types
-import { ICommonState, IGameOfLifeProp } from "../entities/interfaces";
+import { ICommonState, IGameOfLifeProp } from "../entities/gameOfLifeInterfaces";
 import { ThunkDispatch } from "redux-thunk";
 
 // Actions
