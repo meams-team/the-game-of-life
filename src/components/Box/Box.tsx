@@ -6,8 +6,7 @@ import "./box.css";
 // type
 import { IBoxProp } from "../../entities/gameOfLifeInterfaces";
 
-const Box = (props: IBoxProp) => {
-  const { value } = props;
+const Box = ({ value }: IBoxProp) => {
 
   return <div className={`box box-${value}`} />;
 };
