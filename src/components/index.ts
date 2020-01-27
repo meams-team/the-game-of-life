@@ -1,1 +1,1 @@
-export { default as Box } from "./box/Box";
+export { default as Box } from "./box/Box.jsx";
