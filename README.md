@@ -3,7 +3,8 @@
 Environment
  - node v12.14.1
  - npm v6.13.4
- 
+ - incoming params in `.env` file
+
 In the project directory, you can run:
 
 ### `npm install`
