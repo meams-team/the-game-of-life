@@ -7,14 +7,6 @@ export const generateGridData = (rowCount: number, columnCount: number) => {
     }
   }
 
-  // const grid2 = [
-  //   [0, 0, 0, 0, 0],
-  //   [0, 0, 0, 0, 0],
-  //   [0, 1, 1, 1, 0],
-  //   [0, 0, 0, 0, 0],
-  //   [0, 0, 0, 0, 0]
-  // ];
-
   return grid;
 };
 
