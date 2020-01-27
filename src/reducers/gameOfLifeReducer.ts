@@ -4,12 +4,14 @@ import { IGridInitState, IAction } from "../entities/interfaces";
 import { GRID_DATA } from "../actions/actionTypes";
 
 const initialState: IGridInitState = {
-  gridData: []
+  gridData: [],
+  isStarted: false
 };
 
-const gameOfLife = (state = initialState, action: IAction) => {
+const gameOfLifeReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
     case GRID_DATA:
+      console.log("action.payload", action.payload);
       return { ...state, gridData: action.payload };
 
     default:
@@ -17,4 +19,4 @@ const gameOfLife = (state = initialState, action: IAction) => {
   }
 };
 
-export default gameOfLife;
+export default gameOfLifeReducer;

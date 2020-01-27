@@ -2,25 +2,31 @@ import React from "react";
 import { connect } from "react-redux";
 
 // types
-import { ICommonState, IGridProp } from "../entities/interfaces";
+import { ICommonState, IGameOfLifeProp } from "../entities/interfaces";
 import { ThunkDispatch } from "redux-thunk";
 
 // Actions
-import { startPlay } from "../actions/grid";
+import { generateGridData, startPlay } from "../actions/gameOfLifeActions";
 
 // Components
 import { Box } from "../components";
 
-class GameOfLife extends React.Component<IGridProp> {
+class GameOfLife extends React.Component<IGameOfLifeProp> {
   componentDidMount = () => {
-    const { rowCount, columnCount, timeInterval } = this.props;
-    this.props.startPlay(rowCount, columnCount, timeInterval);
+    const { gridData, rowCount, columnCount, timeInterval } = this.props;
+    const { generateGridData, startPlay } = this.props;
+    // generateGridData(5, 5);
+    // console.log("gridData", gridData);
+    startPlay(gridData, rowCount, columnCount, timeInterval);
+
+    // setInterval(() => {
+    // }, 1000);
   };
 
   // render
   drawGrid = () => {
     const { gridData } = this.props;
-
+    console.log("--props", gridData);
     if (!gridData.length) return null;
 
     let elements: React.ReactElement<any>[] = [];
@@ -48,8 +54,8 @@ const mapStateToProps = (state: ICommonState) => {
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
   return {
-    startPlay: (rowCount: number, columnCount: number, timeInterval: number) =>
-      dispatch(startPlay(rowCount, columnCount, timeInterval))
+    generateGridData: (row: number, col: number) => dispatch(generateGridData(5, 5)),
+    startPlay: (gridData: number[][], rowCount: number, columnCount: number, timeInterval: number) => dispatch(startPlay(gridData, rowCount, columnCount, timeInterval))
   };
 };
 

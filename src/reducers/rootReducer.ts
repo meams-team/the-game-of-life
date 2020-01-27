@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import gameOfLife from "./gameOfLife";
+import gameOfLifeReducer from "./gameOfLifeReducer";
 
 export default combineReducers({
-  gameOfLife
+  gameOfLife: gameOfLifeReducer
 });

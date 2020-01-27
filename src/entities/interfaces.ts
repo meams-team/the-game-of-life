@@ -1,23 +1,20 @@
 export interface ICommonState {
-  gameOfLife: IGridProp;
+  gameOfLife: IGameOfLifeProp;
 }
 
-export interface IGridProp {
+export interface IGameOfLifeProp {
   gridData: number[][];
-  generateGridData: (arg0: number, arg1: number) => {};
-  onStartPlay: (arg0: number[][]) => {};
-  startPlay: (
-    rowCount: number,
-    columnCount: number,
-    timeInterval: number
-  ) => {};
   rowCount: number;
   columnCount: number;
   timeInterval: number;
+  isStarted: boolean;
+  generateGridData: (arg0: number, arg1: number) => {};
+  startPlay: (gridData: number[][], rowCount: number, columnCount: number, timeInterval: number) => {};
 }
 
 export interface IGridInitState {
   gridData: [];
+  isStarted: boolean
 }
 
 export interface IBoxProp {
