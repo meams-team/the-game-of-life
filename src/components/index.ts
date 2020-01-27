@@ -1,1 +1,1 @@
-export { default as Box } from "./boxt/Box";
+export { default as Box } from "./box/Box";
