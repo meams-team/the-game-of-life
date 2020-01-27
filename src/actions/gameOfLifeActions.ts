@@ -23,7 +23,6 @@ export const generateGridData = (rowCount: number, columnCount: number) => {
 };
 
 export const play = (grid: number[][], rowCount: number, columnCount: number) => {
-  // console.log("grid", grid);
   let prev = grid;
   let next = JSON.parse(JSON.stringify(grid));
 
@@ -65,8 +64,8 @@ export const play = (grid: number[][], rowCount: number, columnCount: number) =>
   return next;
 };
 
-export const startPlay = (gridData: number[][], rowCount: number, columnCount: number, timeInterval: number) => {
-  return (dispatch: Dispatch, getState: any) => {
+export const startPlay = (rowCount: number, columnCount: number, timeInterval: number) => {
+  return (dispatch: Dispatch) => {
     let grid = generateGridData(rowCount, columnCount);
 
     dispatch({

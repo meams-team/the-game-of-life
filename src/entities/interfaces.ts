@@ -7,14 +7,12 @@ export interface IGameOfLifeProp {
   rowCount: number;
   columnCount: number;
   timeInterval: number;
-  isStarted: boolean;
   generateGridData: (arg0: number, arg1: number) => {};
-  startPlay: (gridData: number[][], rowCount: number, columnCount: number, timeInterval: number) => {};
+  startPlay: (rowCount: number, columnCount: number, timeInterval: number) => {};
 }
 
 export interface IGridInitState {
   gridData: [];
-  isStarted: boolean
 }
 
 export interface IBoxProp {

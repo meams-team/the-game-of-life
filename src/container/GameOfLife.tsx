@@ -13,20 +13,15 @@ import { Box } from "../components";
 
 class GameOfLife extends React.Component<IGameOfLifeProp> {
   componentDidMount = () => {
-    const { gridData, rowCount, columnCount, timeInterval } = this.props;
-    const { generateGridData, startPlay } = this.props;
-    // generateGridData(5, 5);
-    // console.log("gridData", gridData);
-    startPlay(gridData, rowCount, columnCount, timeInterval);
-
-    // setInterval(() => {
-    // }, 1000);
+    const { rowCount, columnCount, timeInterval } = this.props;
+    const { startPlay } = this.props;
+    startPlay(rowCount, columnCount, timeInterval);
   };
 
   // render
   drawGrid = () => {
     const { gridData } = this.props;
-    console.log("--props", gridData);
+
     if (!gridData.length) return null;
 
     let elements: React.ReactElement<any>[] = [];
@@ -55,7 +50,7 @@ const mapStateToProps = (state: ICommonState) => {
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
   return {
     generateGridData: (row: number, col: number) => dispatch(generateGridData(5, 5)),
-    startPlay: (gridData: number[][], rowCount: number, columnCount: number, timeInterval: number) => dispatch(startPlay(gridData, rowCount, columnCount, timeInterval))
+    startPlay: (rowCount: number, columnCount: number, timeInterval: number) => dispatch(startPlay(rowCount, columnCount, timeInterval))
   };
 };
 

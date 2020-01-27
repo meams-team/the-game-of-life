@@ -1,14 +1,13 @@
 import React from "react";
-import "./styles.css";
+import "./box.css";
 
 // type
 import { IBoxProp } from "../../entities/interfaces";
 
-class Box extends React.Component<IBoxProp> {
-  render() {
-    const { value } = this.props;
-    return <div className={`box box_${value}`} />;
-  }
-}
+const Box = (props: IBoxProp) => {
+  const { value } = props;
+  
+  return <div className={`box box-${value}`} />;
+};
 
 export default Box;
