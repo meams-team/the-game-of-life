@@ -1,7 +1,7 @@
 import React from "react";
 
 // containers
-import { GameOfLife } from "./container";
+import { GameOfLife } from "./containers";
 
 class App extends React.Component {
   render() {
